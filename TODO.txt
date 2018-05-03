@@ -1,3 +1,2 @@
 SERVER INSTALLATIONS:
 
-kivy: https://kivy.org/docs/installation/installation-linux.html
