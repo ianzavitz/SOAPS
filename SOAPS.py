@@ -84,7 +84,7 @@ if(spades):
     spadesRun+= " -o "+out+"/spades/"
     
     print("\nSPAdes"+"\n"+spadesRun)
-    #os.system(spadesRun)
+    os.system(spadesRun)
 if(megahit):
     megahitRun += "./megahit"
     if(interlaced==None): # paired end reads
@@ -108,7 +108,7 @@ if(megahit):
     if(contigMin!=None):
             megahitRun += " --min-contig-len " + str(contigMin)
     print("\nmegahit"+"\n"+megahitRun)
-    #os.system(megahitRun)
+    os.system(megahitRun)
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
         fq2faRun += "bin/fq2fa --merge --filter "+fwd[0]+" "+rev[0]+" "+out+"/idba/idba_merged.fa"
@@ -124,7 +124,7 @@ if(idba):
         if(contigMin!=None):
             idbaRun += " --min_contig " + str(contigMin)
         print("\nIDBA\n"+idbaRun)
-        #os.system(idbaRun)
+        os.system(idbaRun)
     else:
         print("\nIDBA\nIDBA does not support multi-read runs")
     
@@ -132,6 +132,8 @@ if(idba):
 
 ##### Parse Output #####    
     
-#create a report.txt file
+#this section is meant to run quast.py on assembly output
+# then create a report.txt file, which I had intended to parse and 
+# add more info relevant to SOAPS
     
 sys.exit(0)
