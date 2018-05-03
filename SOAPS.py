@@ -68,7 +68,7 @@ idba = args.idba
 spadesRun, megahitRun, idbaRun, fq2faRun = '','','','' #empty shell command strings
 
 if(spades):
-    spadesRun += "python3 spades.py"
+    spadesRun += "python3"+os.getcwd()+"SPAdes-3.10.1-Linux/bin/spades.py"
     if(interlaced==None): # multiple files
         i=0
         while(i<len(fwd)):
@@ -86,7 +86,7 @@ if(spades):
     print("\nSPAdes"+"\n"+spadesRun)
     os.system(spadesRun)
 if(megahit):
-    megahitRun += "./megahit"
+    megahitRun += os.getcwd() + "megahit/megahit"
     if(interlaced==None): # paired end reads
         megahitRun += " -1 "
         for idx, f in enumerate(fwd):
@@ -111,11 +111,11 @@ if(megahit):
     os.system(megahitRun)
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
-        fq2faRun += "bin/fq2fa --merge --filter "+fwd[0]+" "+rev[0]+" "+out+"/idba/idba_merged.fa"
+        fq2faRun += os.getcwd()+ "idba/bin/fq2fa --merge --filter "+fwd[0]+" "+rev[0]+" "+out+"/idba/idba_merged.fa"
         print("\nfq2fa(IDBA)\n"+fq2faRun)
         #os.system(fq2faRun)
     
-        idbaRun += "bin/idba_ud"
+        idbaRun += os.getcwd()+ "idba/bin/idba_ud"
         if(t!=None): # number of threads
             idbaRun += " --num_threads "+t
         idbaRun += " -r "+out+"/idba/idba_merged.fa "+out+"/idba/"
