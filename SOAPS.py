@@ -111,7 +111,7 @@ if(megahit):
     os.system(megahitRun)
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
-        fq2faRun += os.getcwd()+ "/idba/bin/fq2fa --merge --filter "+fwd[0]+" "+rev[0]+" "+out+"/idba/idba_merged.fa"
+        fq2faRun += os.getcwd()+ "/idba/bin/fq2fa --merge "+fwd[0]+" "+rev[0]+" "+out+"/idba/idba_merged.fa"
         print("\nfq2fa(IDBA)\n"+fq2faRun)
         os.system(fq2faRun)
     
