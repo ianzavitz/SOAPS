@@ -133,7 +133,7 @@ if(idba):
 ##### Parse Output #####    
     
 #this section is meant to run quast.py on assembly output
-# then create a report.txt file, which I had intended to parse and 
+# then create a report, which I had intended to parse and 
 # add more info relevant to SOAPS
     
 sys.exit(0)
