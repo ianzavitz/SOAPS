@@ -1,6 +1,7 @@
 import argparse
-import os
+import gzip
 import sys
+import os
 
 '''
 This wrapper constructs shell command strings for each
@@ -111,7 +112,13 @@ if(megahit):
     os.system(megahitRun)
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
-        fq2faRun += os.getcwd()+ "/idba/bin/fq2fa --merge "+fwd[0]+" "+rev[0]+" "+out+"/idba/idba_merged.fa"
+        with gzip.open(fwd[0],'rb') as f:
+            with open(fwd[0].replace(".gz",""),'w') as o:
+              o.write(f.read())
+        with gzip.open(rev[0],'rb') as f:
+            with open(rev[0].replace(".gz",""),'w') as o:
+              o.write(f.read())
+        fq2faRun += os.getcwd()+ "/idba/bin/fq2fa --merge "+fwd[0].replace(".gz","")+" "+rev[0].replace(".gz","")+" "+out+"/idba/idba_merged.fa"
         print("\nfq2fa(IDBA)\n"+fq2faRun)
         os.system(fq2faRun)
     
