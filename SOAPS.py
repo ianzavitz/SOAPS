@@ -72,7 +72,7 @@ if(spades):
     if(interlaced==None): # multiple files
         i=0
         while(i<len(fwd)):
-            spadesRun += " --pe"+str(i+1)+"-1 "+fwd[i]+" --pe"+str(i+1)+"-1 "+rev[i]
+            spadesRun += " --pe"+str(i+1)+"-1 "+fwd[i]+" --pe"+str(i+1)+"-2 "+rev[i]
             i+=1
     else: # single interlaced file
         spadesRun += " -12 "+interlaced
