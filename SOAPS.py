@@ -112,10 +112,10 @@ if(megahit):
     os.system(megahitRun)
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
-        with gzip.open(fwd[0],'rb') as f:
+        with gzip.open(fwd[0],'rt') as f:
             with open(fwd[0].replace(".gz",""),'w') as o:
               o.write(f.read())
-        with gzip.open(rev[0],'rb') as f:
+        with gzip.open(rev[0],'rt') as f:
             with open(rev[0].replace(".gz",""),'w') as o:
               o.write(f.read())
         fq2faRun += os.getcwd()+ "/idba/bin/fq2fa --merge "+fwd[0].replace(".gz","")+" "+rev[0].replace(".gz","")+" "+out+"/idba/idba_merged.fa"
