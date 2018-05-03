@@ -68,7 +68,7 @@ idba = args.idba
 spadesRun, megahitRun, idbaRun, fq2faRun = '','','','' #empty shell command strings
 
 if(spades):
-    spadesRun += "python3"+os.getcwd()+"/SPAdes-3.10.1-Linux/bin/spades.py"
+    spadesRun += "python3 "+os.getcwd()+"/SPAdes-3.10.1-Linux/bin/spades.py"
     if(interlaced==None): # multiple files
         i=0
         while(i<len(fwd)):
@@ -100,7 +100,7 @@ if(megahit):
                 megahitRun += ","
     if(t!=None): # number of threads
             megahitRun += " -t "+t
-    megahitRun += " -o " + out+"/megahit/"
+    megahitRun += " -o " + out+"/megahit"
     if(kList!=None): # list of k sizes
         megahitRun += " --k-list "+ kList
     elif(kStep!=None):
