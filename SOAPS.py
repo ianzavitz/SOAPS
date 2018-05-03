@@ -46,9 +46,9 @@ if(out[-1]=='/'):
     out = out[:-1]
 
 t = args.t #number of threads
-
-if(".csv" in args.klist): #can take csv file of k sizes as input
-    kList = open(os.getcwd() + args.klist).read().replace('\n','')
+if(args.klist!=None):
+    if(".csv" in args.klist): #can take csv file of k sizes as input
+        kList = open(os.getcwd() + args.klist).read().replace('\n','')
 else:
     kList = args.klist #Our list of k sizes can be used by megahit and SPAdes
 
