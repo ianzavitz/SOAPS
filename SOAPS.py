@@ -51,8 +51,8 @@ t = args.t #number of threads
 if(args.klist!=None):
     if(".csv" in args.klist): #can take csv file of k sizes as input
         kList = open(os.getcwd() + args.klist).read().replace('\n','')
-else:
-    kList = args.klist #Our list of k sizes can be used by megahit and SPAdes
+    else:
+        kList = args.klist #Our list of k sizes can be used by megahit and SPAdes
 
 kStep = args.kstep #kmer size increment value can be used by megahit and IDBA
 
