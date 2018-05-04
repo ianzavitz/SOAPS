@@ -70,6 +70,7 @@ quast = args.quast
 
 spadesRun, megahitRun, idbaRun, fq2faRun = '','','','' #empty shell command strings
 
+#this section builds spades command line call
 if(spades):
     spadesRun += "python3 "+os.getcwd()+"/SPAdes-3.10.1-Linux/bin/spades.py"
     if(interlaced==None): # multiple files
@@ -89,7 +90,7 @@ if(spades):
     print("\nSPAdes"+"\n"+spadesRun)
     os.system(spadesRun)
 
-  
+  #this section builds megahits command line call
 if(megahit):
     megahitRun += os.getcwd() + "/megahit/megahit"
     if(interlaced==None): # paired end reads
@@ -115,6 +116,7 @@ if(megahit):
     print("\nmegahit"+"\n"+megahitRun)
     os.system(megahitRun)
 
+    #this section builds idba command line call
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
         #with gzip.open(fwd[0],'r') as f:
@@ -148,6 +150,7 @@ if(idba):
   
 ##### Parse Output #####    
 
+#this section builds quast command line call
 if(quast):
     quastRun+=  "python3 "+os.getcwd()+"/quast/quast.py"
 
