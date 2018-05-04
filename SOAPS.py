@@ -115,12 +115,12 @@ if(idba):
         with gzip.open(fwd[0],'r') as f:
             with open(fwd[0].replace(".gz",""),'w') as o:
                 for line in f:
-                    o.write(line)
+                    o.write(line.decode() )
                 o.close()
         with gzip.open(rev[0],'r') as f:
             with open(rev[0].replace(".gz",""),'w') as o:
                 for line in f:
-                    o.write(line)
+                    o.write(line.decode())
                 o.close()
         fq2faRun += os.getcwd()+ "/idba/bin/fq2fa --merge "+fwd[0].replace(".gz","")+" "+rev[0].replace(".gz","")+" "+out+"/idba/idba_merged.fa"
         print("\nfq2fa(IDBA)\n"+fq2faRun)
