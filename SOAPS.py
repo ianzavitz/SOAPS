@@ -146,7 +146,7 @@ if(idba):
     
     
 ##### Parse Output #####    
-
+'''
 if(quast):
     quastRun+=  "python3 "+os.getcwd()+"/quast/quast.py"
 
@@ -174,6 +174,6 @@ if(quast):
     print("\nquast"+"\n"+quastRun)
     os.system(quastRun)
 
-
+'''
     
 sys.exit(0)
