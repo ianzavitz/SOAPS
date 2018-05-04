@@ -30,6 +30,7 @@ parser.add_argument("-contigmin",help="minimum contig length. Only megahit and I
 parser.add_argument("--spades",help="run a SPAdes assembly instance",default=False,action="store_const", const=True)
 parser.add_argument("--megahit",help="run a megahit assembly instance",default=False,action="store_const", const=True)
 parser.add_argument("--idba",help="run an idba assembly instane",default=False,action="store_const", const=True)
+parser.add_argument("--quast",help="run quast quality assessment",default=False,action="store_const", const=True)
 args = parser.parse_args()
 
 #Parsing argparse arguments
@@ -61,6 +62,7 @@ contigMin = args.contigmin #minimum output contig length
 spades = args.spades 
 megahit = args.megahit
 idba = args.idba
+quast = args.quast
 
 
 
@@ -110,7 +112,7 @@ if(megahit):
             megahitRun += " --min-contig-len " + str(contigMin)
     print("\nmegahit"+"\n"+megahitRun)
     os.system(megahitRun)
-'''    
+    
 
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
@@ -141,34 +143,37 @@ if(idba):
     else:
         print("\nIDBA\nIDBA does not support multi-read runs")
     
-'''
-
+    
+    
 ##### Parse Output #####    
 
-quastRun+=  "python3 "+os.getcwd()+"/quast/quast.py"
+if(quast):
+    quastRun+=  "python3 "+os.getcwd()+"/quast/quast.py"
 
-if(t!=None):
-    quastRun+= " --threads "+t
-if(contigMin!=None):
-    quastRun+= " --min-contig " +contigMin
-quastRun+= " -o "+out+ " --gene-finding "
+    if(t!=None):
+        quastRun+= " --threads "+t
+    if(contigMin!=None):
+        quastRun+= " --min-contig " +contigMin
+    quastRun+= " -o "+out+ " --gene-finding "
     
-out_drs = os.listdir(os.getcwd()+'/'+out)
-for dr in out_drs:
-    if("spades" in dr):
-        quastRun+= os.getcwd()+'/'+out +'/spades/contigs.fasta'
-    if("megahit" in dr):
-        quastRun+= os.getcwd()+'/'+out +'/megahit/final.contigs.fa'
-    #if("idba"in dr):
-     #   quastRun+= os.getcwd()+'/'+out +'/'
-#quastRun+= ' -l '  
-#for idx,dr in enumerate(out_drs):
- #   quastRun+= dr
-  #  if(len(out_drs)-1!=idx):
-   #     quastRun+=','
-#quastRun+= '""'  
+    out_drs = os.listdir(os.getcwd()+'/'+out)
+    for dr in out_drs:
+       if("spades" in dr):
+           quastRun+= os.getcwd()+'/'+out +'/spades/contigs.fasta'
+       if("megahit" in dr):
+           quastRun+= os.getcwd()+'/'+out +'/megahit/final.contigs.fa'
+       #if("idba"in dr):
+       #    quastRun+= os.getcwd()+'/'+out +'/'
+    #quastRun+= ' -l '  
+    #for idx,dr in enumerate(out_drs):
+     #   quastRun+= dr
+      #  if(len(out_drs)-1!=idx):
+       #     quastRun+=','
+    #quastRun+= '""'  
 
-print("\nquast"+"\n"+quastRun)
-os.system(quastRun)
+    print("\nquast"+"\n"+quastRun)
+    os.system(quastRun)
+
+
     
 sys.exit(0)
