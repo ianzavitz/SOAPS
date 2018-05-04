@@ -110,6 +110,8 @@ if(megahit):
             megahitRun += " --min-contig-len " + str(contigMin)
     print("\nmegahit"+"\n"+megahitRun)
     os.system(megahitRun)
+'''    
+
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
         with gzip.open(fwd[0],'r') as f:
@@ -139,7 +141,7 @@ if(idba):
     else:
         print("\nIDBA\nIDBA does not support multi-read runs")
     
-
+'''
 
 ##### Parse Output #####    
 
@@ -159,11 +161,11 @@ for dr in out_drs:
         quastRun+= os.getcwd()+'/'+out +'/megahit/final.contigs.fa'
     #if("idba"in dr):
      #   quastRun+= os.getcwd()+'/'+out +'/'
-quastRun+= ' -l '  
-for idx,dr in enumerate(out_drs):
-    quastRun+= dr
-    if(len(out_drs)-1!=idx):
-        quastRun+=','
+#quastRun+= ' -l '  
+#for idx,dr in enumerate(out_drs):
+ #   quastRun+= dr
+  #  if(len(out_drs)-1!=idx):
+   #     quastRun+=','
 #quastRun+= '""'  
 
 print("\nquast"+"\n"+quastRun)
