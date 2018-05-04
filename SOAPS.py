@@ -114,7 +114,6 @@ if(megahit):
             megahitRun += " --min-contig-len " + str(contigMin)
     print("\nmegahit"+"\n"+megahitRun)
     os.system(megahitRun)
-'''
 
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
@@ -146,7 +145,7 @@ if(idba):
         print("\nIDBA\nIDBA does not support multi-read runs")
     
     
-'''   
+  
 ##### Parse Output #####    
 
 if(quast):
