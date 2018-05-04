@@ -142,7 +142,33 @@ if(idba):
 
 
 ##### Parse Output #####    
+
+quastRun+=  "python3 "+os.getcwd()+"/quast/quast.py"
+
+if(t!=None):
+    quastRun+= " --threads "+t
+if(contigMin!=None):
+    quastRun+= " --min-contig " +contigMin
+quastRun+= " -o "+out+ " --gene-finding "
     
+out_drs = os.listdir(os.getcwd()+'/'+out)
+for dr in out_drs:
+    if("spades" in dr):
+        quastRun+= os.getcwd()+'/'+out +'/spades/contigs.fasta'
+    if("megahit" in dr):
+        quastRun+= os.getcwd()+'/'+out +'/megahit/final.contigs.fa'
+    #if("idba"in dr):
+     #   quastRun+= os.getcwd()+'/'+out +'/'
+quastRun+= ' -1 ""'  
+for idx,dr in enumerate(out_drs):
+    quastRun+= dr
+    if(len(out_drs)-1!=idx):
+        quastRun+=','
+quastRun+= '""'  
+
+print("\nquast"+"\n"+quastRun)
+os.system(quastRun)
+
 #this section is meant to run quast.py on assembly output
 # then create a report, which I had intended to parse and 
 # add more info relevant to SOAPS
