@@ -88,6 +88,8 @@ if(spades):
     
     print("\nSPAdes"+"\n"+spadesRun)
     os.system(spadesRun)
+
+  
 if(megahit):
     megahitRun += os.getcwd() + "/megahit/megahit"
     if(interlaced==None): # paired end reads
@@ -112,7 +114,7 @@ if(megahit):
             megahitRun += " --min-contig-len " + str(contigMin)
     print("\nmegahit"+"\n"+megahitRun)
     os.system(megahitRun)
-    
+'''
 
 if(idba):
     if(len(fwd)==1 and len(rev)==1):
@@ -144,9 +146,9 @@ if(idba):
         print("\nIDBA\nIDBA does not support multi-read runs")
     
     
-    
+'''   
 ##### Parse Output #####    
-'''
+
 if(quast):
     quastRun+=  "python3 "+os.getcwd()+"/quast/quast.py"
 
@@ -174,6 +176,6 @@ if(quast):
     print("\nquast"+"\n"+quastRun)
     os.system(quastRun)
 
-'''
+
     
 sys.exit(0)
