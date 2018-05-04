@@ -168,9 +168,5 @@ for idx,dr in enumerate(out_drs):
 
 print("\nquast"+"\n"+quastRun)
 os.system(quastRun)
-
-#this section is meant to run quast.py on assembly output
-# then create a report, which I had intended to parse and 
-# add more info relevant to SOAPS
     
 sys.exit(0)
