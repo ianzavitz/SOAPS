@@ -159,12 +159,12 @@ for dr in out_drs:
         quastRun+= os.getcwd()+'/'+out +'/megahit/final.contigs.fa'
     #if("idba"in dr):
      #   quastRun+= os.getcwd()+'/'+out +'/'
-quastRun+= ' -1 ""'  
+quastRun+= ' -l '  
 for idx,dr in enumerate(out_drs):
     quastRun+= dr
     if(len(out_drs)-1!=idx):
         quastRun+=','
-quastRun+= '""'  
+#quastRun+= '""'  
 
 print("\nquast"+"\n"+quastRun)
 os.system(quastRun)
